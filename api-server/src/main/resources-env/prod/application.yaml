@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: ${DATABASE_DRIVER_CLASS}
+    url: ${DATABASE_URL}
+    username: ${DATABASE_ACCOUNT}
+    password: ${DATABASE_PASSWORD}
+  profiles:
+    active: prod
+    include: core

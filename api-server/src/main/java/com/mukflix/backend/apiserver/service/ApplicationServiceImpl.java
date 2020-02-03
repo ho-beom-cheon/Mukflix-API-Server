@@ -1,4 +1,9 @@
 package com.mukflix.backend.apiserver.service;
 
-public interface ApplicationServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ApplicationServiceImpl {
+
+
 }
