@@ -5,4 +5,11 @@
     <select id="getUserInfo" resultType="com.mukflix.backend.apiserver.dto.User">
         SELECT * FROM USR_INFO;
     </select>
+
+    <insert id="insertUser">
+        INSERT INTO USR_INFO
+            (USR_NM,USR_EMAIL)
+        VALUES
+        (#{userName},#{userEmail})
+    </insert>
 </mapper>

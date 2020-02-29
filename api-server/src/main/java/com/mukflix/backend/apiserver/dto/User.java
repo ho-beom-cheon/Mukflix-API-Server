@@ -1,80 +1,59 @@
 package com.mukflix.backend.apiserver.dto;
 
-public class User {
+import lombok.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+
+// DTO : 데이터를 주고받을 포맷
+
+
+// [ @Getter ] : Getter 메소드를 생성해준다
+// [ @Setter ] : Setter 메소드를 생성해준다
+// [ @ToString ] : toString 메소드를 클래스 필드 확인 후 만들어 준다. exclude속성 사용 시 제외가능 (exclude = "password)
+// [ @NoArgsConstructor ] : 파라미터가 없는 기본 생성자를 생성
+// [ @AllArgsConstructor ] : 모든 필드 값을 파라미터로 받는 생성자를 생성
+// [ @RequiredArgsConstructor ] : final이나 @NonNull인 필드 값만 파라미터로 받는 생성자를 생성
+/*
+   [ @EqualsAndHashCode ]
+* equlas와 hashcode 메소드를 만들어 준다
+* callSuper 속성을 통해 자동 생성 시 부모 클래스의 필드까지 감안할지 안 할지 설정 가능
+* true이면 부모 클래스 필드 값들도 동일한지 체크, false이면(default) 자신 클래스의 필드 값들만 고려
+* */
+//@Getter
+//@Setter
+//@EqualsAndHashCode(of = "uid")
+//@ToString
+//@NoArgsConstructor
+//@RequiredArgsConstructor
+//@AllArgsConstructor
+/*
+   [ @Data ]
+* @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode를 한번에 설정해줌
+* */
+@Entity
+@Data
+/*
+    Serializable을 설정하는 이유?
+    데이터 전송 시 조각단위로 보내는 것이 아닌 하나의 객체로 보낼 수 있게 해주므로 더 효율적이다.
+*/
+public class User implements Serializable {
+
+    @Id //기본키(PK) 지정
+    @GeneratedValue //키를 직접할당하는것이 아닌 자동생성
+    private String usr_sq;
+
+    @Column(nullable = false, unique = true, length = 40)
     String usr_nm;
+
+    @Column(nullable = false, unique = true, length = 40)
     String gend;
+    @Column(nullable = false, unique = true, length = 40)
     String usr_email;
+    @Column(nullable = false, unique = true, length = 40)
     String birth;
-    String usr_sq;
-    String join_dd;
-    String lst_chg_dd;
-
-    public String getUsr_nm() {
-        return usr_nm;
-    }
-
-    public void setUsr_nm(String usr_nm) {
-        this.usr_nm = usr_nm;
-    }
-
-    public String getGend() {
-        return gend;
-    }
-
-    public void setGend(String gend) {
-        this.gend = gend;
-    }
-
-    public String getUsr_email() {
-        return usr_email;
-    }
-
-    public void setUsr_email(String usr_email) {
-        this.usr_email = usr_email;
-    }
-
-    public String getBirth() {
-        return birth;
-    }
-
-    public void setBirth(String birth) {
-        this.birth = birth;
-    }
-
-    public String getUsr_sq() {
-        return usr_sq;
-    }
-
-    public void setUsr_sq(String usr_sq) {
-        this.usr_sq = usr_sq;
-    }
-
-    public String getJoin_dd() {
-        return join_dd;
-    }
-
-    public void setJoin_dd(String join_dd) {
-        this.join_dd = join_dd;
-    }
-
-    public String getLst_chg_dd() {
-        return lst_chg_dd;
-    }
-
-    public void setLst_chg_dd(String lst_chg_dd) {
-        this.lst_chg_dd = lst_chg_dd;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "usr_nm='" + usr_nm + '\'' +
-                ", gend='" + gend + '\'' +
-                ", usr_email='" + usr_email + '\'' +
-                ", birth='" + birth + '\'' +
-                ", usr_sq='" + usr_sq + '\'' +
-                ", join_dd='" + join_dd + '\'' +
-                ", lst_chg_dd='" + lst_chg_dd + '\'' +
-                '}';
-    }
 }

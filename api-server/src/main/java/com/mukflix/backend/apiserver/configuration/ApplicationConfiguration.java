@@ -9,5 +9,5 @@ import org.springframework.context.annotation.PropertySource;
 @Slf4j
 @Configuration
 public class ApplicationConfiguration {
-
+    //가이드용
 }
