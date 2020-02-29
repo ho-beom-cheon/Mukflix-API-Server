@@ -1,11 +1,10 @@
-package com.mukflix.backend.apiserver.mapper;
+package com.mukflix.backend.apiserver.dao.mapper;
 
 import com.mukflix.backend.apiserver.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 @Repository
 @Mapper
