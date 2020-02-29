@@ -30,4 +30,4 @@ out/
 
 ### VS Code ###
 .vscode/
-rdb.properties
+/src/main/resources/rdb.properties

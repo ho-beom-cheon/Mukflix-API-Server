@@ -1,8 +1,10 @@
 package com.mukflix.backend.apiserver.service;
 
+import com.mukflix.backend.apiserver.dto.User;
+
 import java.util.List;
-import java.util.Map;
 
 public interface UserLoginService {
-    List<Map<String, Object>> getUserInfo();
+
+    List<User> getUserInfo() throws Exception;
 }

@@ -1,5 +1,6 @@
 package com.mukflix.backend.apiserver.mapper;
 
+import com.mukflix.backend.apiserver.dto.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +10,5 @@ import java.util.Map;
 @Repository
 @Mapper
 public interface UserLoginMapper {
-    List<Map<String, Object>> getUserInfo();
+    List<User> getUserInfo();
 }
