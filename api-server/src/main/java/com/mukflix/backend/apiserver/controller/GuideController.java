@@ -16,10 +16,10 @@ import java.util.List;
  * 3. 대문자 필요시 "-" 사용 (mukflix-guide)
  * */
 @RestController
-@RequestMapping("/guide")
+@RequestMapping("/guide") // EndPoint 지점 (요청에 대한 노출부)
 public class GuideController {
 
-    @Autowired
+    @Autowired // 구현체의 Annotation 에 연결됨
     private GuideService guideService;
 
     @GetMapping
@@ -30,7 +30,6 @@ public class GuideController {
 
     @PostMapping
     public Guide createGuide(@RequestBody Guide guide) {
-
         return guideService.createGuide(guide);
     }
 
