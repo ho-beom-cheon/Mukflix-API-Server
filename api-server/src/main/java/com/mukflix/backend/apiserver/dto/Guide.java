@@ -4,12 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
-@Entity
-@Table(name = "guide")
+@Data // Lombok
+@Entity  // TODO 설명 쓰기
+@Table(name = "GUIDE")
 public class Guide {
-
-    @Id
+    @Id // PrimaryKey
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
