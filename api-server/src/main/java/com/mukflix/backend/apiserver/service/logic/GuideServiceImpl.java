@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@Slf4j
+@Service // Autowired 연결부
+@Slf4j // Logging
 public class GuideServiceImpl implements GuideService {
 
-    @Autowired
+    @Autowired // Repository 내 "Repository" Annotation 연결
     GuideRepository guideRepository;
 
     @Override
