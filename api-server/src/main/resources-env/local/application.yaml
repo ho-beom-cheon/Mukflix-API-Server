@@ -7,3 +7,20 @@ spring:
   profiles:
     active: local
     include: core
+---
+spring:
+  spring:
+    jpa:
+      hibernate:
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+---
+spring:
+  jpa:
+    properties.hibernate.hbm2ddl.auto : update
+    showSql : true
+  messages:
+    basename : i18n/exception
+    encoding: utf-8
+  jwt:
+    secret: govlepel@$&amp;

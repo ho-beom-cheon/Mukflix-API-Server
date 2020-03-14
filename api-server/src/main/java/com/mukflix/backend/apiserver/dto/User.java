@@ -1,12 +1,56 @@
 package com.mukflix.backend.apiserver.dto;
 
-import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+
+@Builder
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "USR_INFO")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USR_SQ")
+    private Long USR_SQ;
+
+
+
+    @Column(name = "USR_EMAIL")
+    private String email;
+
+    @Column(name = "USR_NM")
+    private String name;
+
+    @Column(name = "GEND")
+    private String gend;
+
+    @Column(name = "BIRTH")
+    private String birth;
+
+    @Column(name = "JOIN_DD")
+    private String join_dd;
+
+    @Column(name = "LST_CHG_DD")
+    private String chg_dd;
+
+    @OneToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="USR_SQ")
+    private PassWord passWord;
+
+
+
+}
+
 
 
 // DTO : 데이터를 주고받을 포맷
@@ -35,25 +79,25 @@ import java.io.Serializable;
    [ @Data ]
 * @Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode를 한번에 설정해줌
 * */
-@Entity
-@Data
-/*
-    Serializable을 설정하는 이유?
-    데이터 전송 시 조각단위로 보내는 것이 아닌 하나의 객체로 보낼 수 있게 해주므로 더 효율적이다.
-*/
-public class User implements Serializable {
-
-    @Id //기본키(PK) 지정
-    @GeneratedValue //키를 직접할당하는것이 아닌 자동생성
-    private String usr_sq;
-
-    @Column(nullable = false, unique = true, length = 40)
-    String usr_nm;
-
-    @Column(nullable = false, unique = true, length = 40)
-    String gend;
-    @Column(nullable = false, unique = true, length = 40)
-    String usr_email;
-    @Column(nullable = false, unique = true, length = 40)
-    String birth;
-}
+//@Entity
+//@Data
+///*
+//    Serializable을 설정하는 이유?
+//    데이터 전송 시 조각단위로 보내는 것이 아닌 하나의 객체로 보낼 수 있게 해주므로 더 효율적이다.
+//*/
+//public class User implements Serializable {
+//
+//    @Id //기본키(PK) 지정
+//    @GeneratedValue //키를 직접할당하는것이 아닌 자동생성
+//    private String usr_sq;
+//
+//    @Column(nullable = false, unique = true, length = 40)
+//    String usr_nm;
+//
+//    @Column(nullable = false, unique = true, length = 40)
+//    String gend;
+//    @Column(nullable = false, unique = true, length = 40)
+//    String usr_email;
+//    @Column(nullable = false, unique = true, length = 40)
+//    String birth;
+//}
