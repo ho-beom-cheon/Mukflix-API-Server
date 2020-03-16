@@ -3,5 +3,6 @@
 <configuration>
     <mappers>
         <mapper resource="UserLoginMapper.xml"/>
+        <mapper resource="AccountMapper.xml"/>
     </mappers>
 </configuration>

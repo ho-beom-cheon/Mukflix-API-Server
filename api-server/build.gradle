@@ -36,6 +36,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.mariadb.jdbc:mariadb-java-client'
 
+//    //Spring boot Security
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
     //Spring boot Swagger
     implementation 'io.springfox:springfox-swagger2:2.7.0'
     implementation 'io.springfox:springfox-swagger-ui:2.7.0'

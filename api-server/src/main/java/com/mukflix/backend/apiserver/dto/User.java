@@ -1,80 +1,57 @@
 package com.mukflix.backend.apiserver.dto;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+
+@Builder
+@Data
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "USR_INFO")
 public class User {
-    String usr_nm;
-    String gend;
-    String usr_email;
-    String birth;
-    String usr_sq;
-    String join_dd;
-    String lst_chg_dd;
 
-    public String getUsr_nm() {
-        return usr_nm;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USR_SQ")
+    private Long userSequence ;
 
-    public void setUsr_nm(String usr_nm) {
-        this.usr_nm = usr_nm;
-    }
 
-    public String getGend() {
-        return gend;
-    }
 
-    public void setGend(String gend) {
-        this.gend = gend;
-    }
+    @Column(name = "USR_EMAIL")
+    private String userEmail;
 
-    public String getUsr_email() {
-        return usr_email;
-    }
+    @Column(name = "USR_NM")
+    private String userName;
 
-    public void setUsr_email(String usr_email) {
-        this.usr_email = usr_email;
-    }
+    @Column(name = "GEND")
+    private String userGender;
 
-    public String getBirth() {
-        return birth;
-    }
+    @Column(name = "BIRTH")
+    private String userBirth;
 
-    public void setBirth(String birth) {
-        this.birth = birth;
-    }
+    @Column(name = "JOIN_DD")
+    private String userJoin_dd;
 
-    public String getUsr_sq() {
-        return usr_sq;
-    }
+    @Column(name = "LST_CHG_DD")
+    private String userChg_dd;
 
-    public void setUsr_sq(String usr_sq) {
-        this.usr_sq = usr_sq;
-    }
+    /**
+     *   Join(조인)
+     *     비밀번호 정보를 다른 뱡향으로 활용하기 위해
+     *     회원정보와 비밀번호 정보를 다른 테이블로 관리
+     */
 
-    public String getJoin_dd() {
-        return join_dd;
-    }
+    @OneToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="USR_SQ")
+    private PasswordChangeRecord passWordRecord;
 
-    public void setJoin_dd(String join_dd) {
-        this.join_dd = join_dd;
-    }
 
-    public String getLst_chg_dd() {
-        return lst_chg_dd;
-    }
 
-    public void setLst_chg_dd(String lst_chg_dd) {
-        this.lst_chg_dd = lst_chg_dd;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "usr_nm='" + usr_nm + '\'' +
-                ", gend='" + gend + '\'' +
-                ", usr_email='" + usr_email + '\'' +
-                ", birth='" + birth + '\'' +
-                ", usr_sq='" + usr_sq + '\'' +
-                ", join_dd='" + join_dd + '\'' +
-                ", lst_chg_dd='" + lst_chg_dd + '\'' +
-                '}';
-    }
 }
