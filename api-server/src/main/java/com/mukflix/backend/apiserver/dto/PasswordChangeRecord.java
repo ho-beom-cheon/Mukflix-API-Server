@@ -12,20 +12,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "PW_CHG_HIST")
-public class PassWord{
+public class PasswordChangeRecord{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USR_SQ")
-    private Long sq;
-
-//    @Column(name = "PW_SQ")
-//    private Long pw_sq;
-
+    private Long userSequence ;
 
     @Column(name = "PW")
-    private String pw;
-//
+    private String password;
+
+    //비밀번호 수정 날짜는 마지막 변경 시간을 자동으로 등록할 예정임
+    //Date 개발 전까진 비활성화
 //    @Column(name = "MOD_DDTM")
 //    private String mod_ddtm;
 

@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class ResponseService {
 
+
     public enum CommonResponse{
         SUCCESS(0, "성공하였습니다."),
         FAIL(-1,"실패하였습니다.");
