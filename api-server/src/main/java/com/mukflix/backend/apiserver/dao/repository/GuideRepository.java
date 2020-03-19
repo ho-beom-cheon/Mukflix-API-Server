@@ -11,6 +11,4 @@ public interface GuideRepository extends JpaRepository<Guide, String> {
     @Override
     void deleteById(String s);
 
-    //@Query("SELECT ID FROM ?")
-    Guide findByName(String name);
 }
