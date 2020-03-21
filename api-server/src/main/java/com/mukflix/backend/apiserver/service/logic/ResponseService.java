@@ -41,11 +41,9 @@ public class ResponseService {
     }
     // 다중건 결과를 처리하는 메소드
     public <T> ListResult<T> getListResult(List<T> list) {
-        log.info("리스트 : "+list);
         ListResult<T> result = new ListResult<>();
         result.setList(list);
         setSuccessResult(result);
-        log.info("결과 : "+result);
         return result;
     }
     // 성공 결과만 처리하는 메소드
