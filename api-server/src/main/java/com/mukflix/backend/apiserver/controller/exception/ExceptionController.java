@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 예외 처리 컨트롤러
+ */
+
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/exception")

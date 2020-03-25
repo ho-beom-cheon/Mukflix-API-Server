@@ -1,5 +1,6 @@
 package com.mukflix.backend.apiserver.configuration.advice.exception;
 
+
 public class CAuthenticationEntryPointException extends RuntimeException {
     public CAuthenticationEntryPointException(String msg, Throwable t) {
         super(msg, t);

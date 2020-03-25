@@ -32,13 +32,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
 
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-freemarker'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.mariadb.jdbc:mariadb-java-client'
 
 
-//    //Spring boot Security, JWT(JSON Web Token) 라이브러리
+
+    //Spring boot Security, JWT(JSON Web Token) 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 

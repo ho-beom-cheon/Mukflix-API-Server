@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {"2. User"})
+@Api(tags = {"2. MUK_USER"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/v1")
@@ -64,7 +64,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 access_token", required = true, dataType = "String", paramType = "header")
     })
-    @ApiOperation(value = "회원 삭제", notes = "userId로 회원정보를 삭제한다")
+    @ApiOperation(value = "회원 탈퇴", notes = "userId로 회원정보를 삭제한다")
     @DeleteMapping(value = "/user/{usersquence}")
     public CommonResult delete(
             @ApiParam(value = "회원번호", required = true) @PathVariable Long usersquence) {

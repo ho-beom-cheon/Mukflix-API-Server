@@ -18,9 +18,17 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * [ JwtTokenProvider 생성 ]
+ *
+ * Jwt 토큰 생성 및 유효성 검증을 하는 컴포넌트.
+ *
+ */
+
 @RequiredArgsConstructor
 @Component
-public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
+public class JwtTokenProvider {
 
     @Value("spring.jwt.secret")
     private String secretKey;
@@ -29,6 +37,13 @@ public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
 
     private final UserDetailsService userDetailsService;
 
+    /*
+    * [@PostConstruct]
+    * 객체의 초기화 부분
+    * 객체가 생성된 후 별도의 초기화 작업을 위해 실행하는 메소드를 선언한다.
+    * init 메소드는 WAS가 띄워질 때 실행된다.
+    * */
+
     @PostConstruct
     protected void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
@@ -36,7 +51,7 @@ public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
 
     // Jwt 토큰 생성
     public String createToken(String userPk, List<String> roles) {
-        Claims claims = Jwts.claims().setSubject(userPk);
+        Claims claims = Jwts.claims().setSubject(userPk); //claim(사용자 정보, 데이터 속성)을 담고 있는 토큰
         claims.put("roles", roles);
         Date now = new Date();
         return Jwts.builder()
@@ -68,7 +83,7 @@ public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
             return !claims.getBody().getExpiration().before(new Date());
-        } catch (Exception e) {
+        }catch (Exception e) {
             return false;
         }
     }

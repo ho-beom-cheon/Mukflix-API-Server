@@ -32,6 +32,7 @@ public class ResponseService {
             return msg;
         }
     }
+    // 단일건 결과를 처리하는 메소드
     public <T> SingleResult<T> getSingleResult(T data){
         SingleResult<T> result = new SingleResult<>();
         result.setData(data);

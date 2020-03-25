@@ -15,16 +15,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collections;
 
 @Slf4j
-@Api(tags = {"1. Sign"})
+@Api(tags = {"1. MUK_SIGN"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/v1")
@@ -51,22 +48,17 @@ public class SignController {
 
     @ApiOperation(value = "가입", notes = "회원가입을 한다.")
     @PostMapping(value = "/signup")
-    public CommonResult signup(@ApiParam(value = "회원ID : 이메일", required = true) @Valid @RequestParam String email,
-                               @ApiParam(value = "비밀번호", required = true) @Valid @RequestParam String password,
-                               @ApiParam(value = "이름", required = false) @RequestParam String name,
-                               @ApiParam(value = "생일", required = false) @RequestParam String birth,
-                               @ApiParam(value = "성별", required = false) @RequestParam String gend
-                               ){
+    public CommonResult signup(@RequestBody User user){
 
         PasswordChangeRecord passwordChangeRecord = new PasswordChangeRecord();
-        passwordChangeRecord.setPassword(passwordEncoder.encode(password));
+        passwordChangeRecord.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userJpaRepository.save(User.builder()
-                .userEmail(email)
+                .userEmail(user.getUserEmail())
                 .passwordChangeRecord(passwordChangeRecord)
-                .userName(name)
-                .userBirth(birth)
-                .userGender(gend)
+                .userName(user.getUsername())
+                .userBirth(user.getUserBirth())
+                .userGender(user.getUserGender())
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
 

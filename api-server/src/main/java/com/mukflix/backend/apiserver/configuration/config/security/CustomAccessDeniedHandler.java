@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Jwt 토큰이 정상이라는 가정 하에, Jwt 토큰이 가지지 못한 권한의
+ * 리소스를 접근할 때 발생하는 오류 해결책
+ */
+
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     @Override

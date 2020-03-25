@@ -1,5 +1,9 @@
 package com.mukflix.backend.apiserver.configuration.advice.exception;
 
+/**
+ * Custom Exception
+ */
+
 public class CUserNotFoundException extends RuntimeException {
     public CUserNotFoundException(String msg, Throwable t) {
         super(msg, t);
